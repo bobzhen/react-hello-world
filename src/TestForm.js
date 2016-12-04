@@ -1,4 +1,4 @@
-import React, { PropTypes } from 'react'
+import React from 'react'
 
 class TestForm extends React.Component {
   state = {
@@ -14,7 +14,7 @@ class TestForm extends React.Component {
   changeValue = (e) => {
     this.setState({[e.target.name]: e.target.value})
   }
-  
+
   // changeNameValue = (e) => {
   //   this.setState({ name: e.target.value })
   // }
