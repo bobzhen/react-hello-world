@@ -1,12 +1,30 @@
 import React, { PropTypes } from 'react'
 
 class TestForm extends React.Component {
+  state = {
+    name: "",
+    checked: false
+  }
+
   handleSubmit = (e) => {
     e.preventDefault()
-    console.log({
-      name: this.name.value,
-      checked: this.checked.checked
-    })
+    console.log(this.state)
+  }
+
+  changeValue = (e) => {
+    this.setState({[e.target.name]: e.target.value})
+  }
+  
+  // changeNameValue = (e) => {
+  //   this.setState({ name: e.target.value })
+  // }
+  //
+  // changePositionValue = (e) => {
+  //   this.setState({ position: e.target.value })
+  // }
+
+  changeCheckedValue = (e) => {
+    this.setState({ checked: e.target.checked })
   }
 
   render () {
@@ -14,12 +32,23 @@ class TestForm extends React.Component {
       <form onSubmit={this.handleSubmit}>
         <input
           placeholder="hello world"
-          ref={input => this.name = input}
+          value={this.state.name}
+          name="name"
+          onChange={this.changeValue}
         />
+
+        <input
+          placeholder="your position"
+          value={this.state.position}
+          name="position"
+          onChange={this.changeValue}
+        />
+
         <label>
           <input
             type="checkbox"
-            ref={input => this.checked = input}
+            checked={this.state.checked}
+            onChange={this.changeCheckedValue}
           />
           Click
         </label>
